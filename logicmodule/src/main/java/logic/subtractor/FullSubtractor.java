@@ -10,14 +10,14 @@ public class FullSubtractor {
     private int inputB;
 
     private int output;
-    private int carryInput;
-    private int carryOutput;
+    private int borrowInput;
+    private int borrowOutput;
 
-    public FullSubtractor(int carryInput, int inputA, int inputB) {
-        this.carryInput = carryInput;
+    public FullSubtractor(int borrowInput, int inputA, int inputB) {
+        this.borrowInput = borrowInput;
         this.inputA = inputA;
         this.inputB = inputB;
-        setResults(carryInput, inputA, inputB);
+        setResults(borrowInput, inputA, inputB);
     }
 
     public int getInputA() {
@@ -26,7 +26,7 @@ public class FullSubtractor {
 
     public void setInputA(int inputA) {
         this.inputA = inputA;
-        setResults(carryInput, inputA, inputB);
+        setResults(borrowInput, inputA, inputB);
     }
 
     public int getInputB() {
@@ -35,33 +35,32 @@ public class FullSubtractor {
 
     public void setInputB(int inputB) {
         this.inputB = inputB;
-        setResults(carryInput, inputA, inputB);
+        setResults(borrowInput, inputA, inputB);
     }
 
-    public int getCarryInput() {
-        return carryInput;
+    public int getBorrowInput() {
+        return borrowInput;
     }
 
-    public void setCarryInput(int carryInput) {
-        this.carryInput = carryInput;
-        setResults(carryInput, inputA, inputB);
+    public void setBorrowInput(int borrowInput) {
+        this.borrowInput = borrowInput;
+        setResults(borrowInput, inputA, inputB);
     }
 
-    public int getCarryOutput() {
-        return carryOutput;
+    public int getBorrowOutput() {
+        return borrowOutput;
     }
 
     public int getOutput() {
         return output;
     }
 
-    //TODO odejmowanie pożyczki
-    private void setResults(int cin, int a, int b) {
-        HalfSubtractor ha1 = new HalfSubtractor(a, b);
-        HalfSubtractor ha2 = new HalfSubtractor(cin, ha1.getOutput());
-        ORGate or = new ORGate(ha2.getCarryOutput(), ha1.getCarryOutput());
+    private void setResults(int bin, int a, int b) {
+        HalfSubtractor fs1 = new HalfSubtractor(a, b);
+        HalfSubtractor fs2 = new HalfSubtractor(bin, fs1.getOutput());
+        ORGate or = new ORGate(fs2.getBorrowOutput(), fs1.getBorrowOutput());
 
-        output = ha2.getOutput();
-        carryOutput = or.getOutput();
+        output = fs2.getOutput();
+        borrowOutput = or.getOutput();
     }
 }

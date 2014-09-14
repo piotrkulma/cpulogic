@@ -12,7 +12,7 @@ public class HalfSubtractor {
     private int inputB;
 
     private int output;
-    private int carryOutput;
+    private int borrowOutput;
 
     public HalfSubtractor(int inputA, int inputB) {
         this.inputA = inputA;
@@ -42,8 +42,8 @@ public class HalfSubtractor {
         return output;
     }
 
-    public int getCarryOutput() {
-        return carryOutput;
+    public int getBorrowOutput() {
+        return borrowOutput;
     }
 
     private void setResults(int a, int b) {
@@ -51,7 +51,8 @@ public class HalfSubtractor {
         NOTGate not = new NOTGate(b);
         ANDGate and = new ANDGate(a, not.getOutput());
 
+
         output = xor.getOutput();
-        carryOutput = and.getOutput();
+        borrowOutput = and.getOutput();
     }
 }
