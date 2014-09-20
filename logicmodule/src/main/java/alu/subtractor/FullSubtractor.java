@@ -27,30 +27,13 @@ public class FullSubtractor {
         setResults(this.borrowInput, this.inputA, this.inputB);
     }
 
-    public LogicValue getInputA() {
-        return inputA;
-    }
-
     public void setInputA(LogicValue inputA) {
         this.inputA = inputA;
         setResults(this.borrowInput, this.inputA, this.inputB);
     }
 
-    public LogicValue getInputB() {
-        return inputB;
-    }
-
     public void setInputB(LogicValue inputB) {
         this.inputB = inputB;
-        setResults(this.borrowInput, this.inputA, this.inputB);
-    }
-
-    public LogicValue getBorrowInput() {
-        return borrowInput;
-    }
-
-    public void setBorrowInput(LogicValue borrowInput) {
-        this.borrowInput = borrowInput;
         setResults(this.borrowInput, this.inputA, this.inputB);
     }
 

@@ -25,7 +25,6 @@ public abstract class LogicGate {
     }
 
     public abstract LogicValue getOutput();
-    public abstract void setOutput(LogicValue a, LogicValue b);
 
     @Override
     public String toString() {

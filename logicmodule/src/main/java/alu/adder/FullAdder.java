@@ -27,30 +27,13 @@ public class FullAdder {
         setResults(this.carryInput, this.inputA, this.inputB);
     }
 
-    public LogicValue getInputA() {
-        return inputA;
-    }
-
     public void setInputA(LogicValue inputA) {
         this.inputA = inputA;
         setResults(this.carryInput, this.inputA, this.inputB);
     }
 
-    public LogicValue getInputB() {
-        return inputB;
-    }
-
     public void setInputB(LogicValue inputB) {
         this.inputB = inputB;
-        setResults(this.carryInput, this.inputA, this.inputB);
-    }
-
-    public LogicValue getCarryInput() {
-        return carryInput;
-    }
-
-    public void setCarryInput(LogicValue carryInput) {
-        this.carryInput = carryInput;
         setResults(this.carryInput, this.inputA, this.inputB);
     }
 

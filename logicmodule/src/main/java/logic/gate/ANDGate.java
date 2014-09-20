@@ -18,17 +18,9 @@ public final class ANDGate extends LogicGate {
         return out;
     }
 
-    public LogicValue getInputA() {
-        return inA;
-    }
-
     public void setInputA(LogicValue inA) {
         this.inA = inA;
         setOutput(this.inA, this.inB);
-    }
-
-    public LogicValue getInputB() {
-        return inB;
     }
 
     public void setInputB(LogicValue inB) {

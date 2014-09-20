@@ -3,7 +3,7 @@ package logic.gate;
 import logic.LogicValue;
 
 /**
- * Created by root on 07.09.14.
+ * Created by Piotr Kulma on 07.09.14.
  */
 public final class NORGate extends LogicGate {
     private ORGate or;
@@ -22,17 +22,9 @@ public final class NORGate extends LogicGate {
         return out;
     }
 
-    public LogicValue getInputA() {
-        return inA;
-    }
-
     public void setInputA(LogicValue inA) {
         this.inA = inA;
         setOutput(this.inA, this.inB);
-    }
-
-    public LogicValue getInputB() {
-        return inB;
     }
 
     public void setInputB(LogicValue inB) {

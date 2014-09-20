@@ -27,17 +27,9 @@ public class HalfSubtractor {
         setResults(this.inputA, this.inputB);
     }
 
-    public LogicValue getInputA() {
-        return inputA;
-    }
-
     public void setInputA(LogicValue inputA) {
         this.inputA = inputA;
         setResults(this.inputA, this.inputB);
-    }
-
-    public LogicValue getInputB() {
-        return inputB;
     }
 
     public void setInputB(LogicValue inputB) {

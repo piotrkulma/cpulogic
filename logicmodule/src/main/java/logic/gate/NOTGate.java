@@ -18,14 +18,6 @@ public final class NOTGate extends LogicGate {
         return out;
     }
 
-    public LogicValue getInput() {
-        return inA;
-    }
-
-    public void setInput(LogicValue inA) {
-        this.inA = inA;
-    }
-
     public void setOutput(LogicValue a, LogicValue b) {
         if(a.getValue() == 1) {
             this.out.setValue(0);

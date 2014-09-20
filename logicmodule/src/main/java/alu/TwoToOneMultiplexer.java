@@ -34,30 +34,13 @@ public class TwoToOneMultiplexer {
         return out;
     }
 
-    public LogicValue getInputA() {
-        return inputA;
-    }
-
     public void setInputA(LogicValue inputA) {
         this.inputA = inputA;
         setOutput(this.inputS, this.inputA, this.inputB);
     }
 
-    public LogicValue getInputB() {
-        return inputB;
-    }
-
     public void setInputB(LogicValue inputB) {
         this.inputB = inputB;
-        setOutput(this.inputS, this.inputA, this.inputB);
-    }
-
-    public LogicValue getInputS() {
-        return inputS;
-    }
-
-    public void setInputS(LogicValue inputS) {
-        this.inputS = inputS;
         setOutput(this.inputS, this.inputA, this.inputB);
     }
 

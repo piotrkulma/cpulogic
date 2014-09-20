@@ -1,7 +1,6 @@
 package alu;
 
 import alu.adder.FullAdder;
-import alu.adder.HalfAdder;
 import alu.subtractor.FullSubtractor;
 import logic.LogicValue;
 import logic.gate.ANDGate;
@@ -55,8 +54,37 @@ public class OneBitAlu {
 
     private TwoToOneMultiplexer s2_0;
 
-    public OneBitAlu() {
+    public OneBitAlu(LogicValue operationCode[], LogicValue carryInput, LogicValue inputA, LogicValue inputB) {
+        this.operationCode = operationCode;
+        this.carryInput = carryInput;
+        this.inputA = inputA;
+        this.inputB = inputB;
+
         initArchitectureElements();
+    }
+
+    public void setOperationCode(LogicValue[] operationCode) {
+        this.operationCode = operationCode;
+    }
+
+    public void setInputA(LogicValue inputA) {
+        this.inputA = inputA;
+    }
+
+    public void setInputB(LogicValue inputB) {
+        this.inputB = inputB;
+    }
+
+    public void setCarryInput(LogicValue carryInput) {
+        this.carryInput = carryInput;
+    }
+
+    public LogicValue getOperationResult() {
+        return operationResult;
+    }
+
+    public LogicValue getCarryOutput() {
+        return carryOutput;
     }
 
     private void initArchitectureElements() {
@@ -76,6 +104,5 @@ public class OneBitAlu {
         s1_1 = new TwoToOneMultiplexer(operationCode[2], s0_3.getOutput(), s0_2.getOutput());
 
         s2_0 = new TwoToOneMultiplexer(operationCode[2], s1_1.getOutput(), s1_0.getOutput());
-
     }
 }
