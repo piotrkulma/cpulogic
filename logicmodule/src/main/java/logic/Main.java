@@ -1,9 +1,7 @@
 package logic;
 
-import logic.adder.FullAdder;
-import logic.gate.NOTGate;
-import logic.subtractor.FullSubtractor;
-import logic.subtractor.HalfSubtractor;
+import alu.adder.FullAdder;
+import alu.subtractor.FullSubtractor;
 
 /**
  * Created by Piotr Kulma on 07.09.14.
@@ -11,16 +9,21 @@ import logic.subtractor.HalfSubtractor;
 
 public class Main {
     public static void main(String[] args) {
-        //_4BitAdder("0001", "0001");
-        //_4BitSubtractor("1001", "1111");
-        //HalfSubtractor hs = new HalfSubtractor(1, 0);
+        _4BitAdder("0001", "0001");
+        System.out.println();
+        _4BitAdder("1001", "0001");
+        System.out.println();
+        _4BitAdder("1111", "1111");
+        System.out.println();
+        _4BitSubtractor("1001", "1111");
+
     }
 
-    public static int[] stringToArray(String binary) {
-        int array[] = new int[binary.length()];
+    public static LogicValue[] stringToArray(String binary) {
+        LogicValue array[] = new LogicValue[binary.length()];
 
         for(int i=0; i<binary.length(); i++) {
-            array[i] = (binary.charAt(i) - 48);
+            array[i] = new LogicValue(binary.charAt(i) - 48);
         }
 
         return array;
@@ -28,10 +31,10 @@ public class Main {
 
     public static void _4BitSubtractor(String as, String bs) {
         int bit = 4;
-        int borrowInput = 0;
+        LogicValue borrowInput = new LogicValue(0);
 
-        int[] a = stringToArray(as);
-        int[] b = stringToArray(bs);
+        LogicValue[] a = stringToArray(as);
+        LogicValue[] b = stringToArray(bs);
 
         FullSubtractor subtractor[] = new FullSubtractor[bit];
 
@@ -41,19 +44,19 @@ public class Main {
         }
 
         System.out.print(
-                subtractor[3].getOutput() + "" +
-                        subtractor[2].getOutput() + "" +
-                        subtractor[1].getOutput() + "" +
-                        subtractor[0].getOutput() + " C:" +
-                        subtractor[3].getBorrowOutput());
+                subtractor[3].getOutput().getValue() + "" +
+                        subtractor[2].getOutput().getValue() + "" +
+                        subtractor[1].getOutput().getValue() + "" +
+                        subtractor[0].getOutput().getValue() + " C:" +
+                        subtractor[3].getBorrowOutput().getValue());
     }
 
     public static void _4BitAdder(String as, String bs) {
         int bit = 4;
-        int carryInput = 0;
+        LogicValue carryInput = new LogicValue(0);
 
-        int[] a = stringToArray(as);
-        int[] b = stringToArray(bs);
+        LogicValue[] a = stringToArray(as);
+        LogicValue[] b = stringToArray(bs);
 
         FullAdder adder[] = new FullAdder[bit];
 
@@ -63,10 +66,10 @@ public class Main {
         }
 
         System.out.print(
-                adder[3].getOutput() + "" +
-                adder[2].getOutput() + "" +
-                adder[1].getOutput() + "" +
-                adder[0].getOutput() + " C:" +
-                adder[3].getCarryOutput());
+                adder[3].getOutput().getValue() + "" +
+                adder[2].getOutput().getValue() + "" +
+                adder[1].getOutput().getValue() + "" +
+                adder[0].getOutput().getValue() + " C:" +
+                adder[3].getCarryOutput().getValue());
     }
 }
