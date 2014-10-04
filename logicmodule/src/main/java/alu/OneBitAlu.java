@@ -7,6 +7,7 @@ import logic.gate.ANDGate;
 import logic.gate.NOTGate;
 import logic.gate.ORGate;
 import logic.gate.XORGate;
+import logic.utils.LogicValueUtil;
 
 /**
  * Created by Piotr Kulma on 20.09.14.
@@ -34,15 +35,15 @@ public class OneBitAlu {
     private LogicValue inputB;
     private LogicValue carryInput;
 
-    private LogicValue operationResult;
-    private LogicValue carryOutput;
-
     private ANDGate and;
     private ORGate or;
     private NOTGate not;
     private XORGate xor;
+
     private FullAdder fullAdder;
     private FullSubtractor fullSubtractor;
+    private TwoToOneMultiplexer carryOutMultiplexer;
+
 
     private TwoToOneMultiplexer s0_0;
     private TwoToOneMultiplexer s0_1;
@@ -60,49 +61,59 @@ public class OneBitAlu {
         this.inputA = inputA;
         this.inputB = inputB;
 
-        initArchitectureElements();
+        initArchitecture();
     }
 
-    public void setOperationCode(LogicValue[] operationCode) {
-        this.operationCode = operationCode;
-    }
-
-    public void setInputA(LogicValue inputA) {
-        this.inputA = inputA;
-    }
-
-    public void setInputB(LogicValue inputB) {
-        this.inputB = inputB;
-    }
-
-    public void setCarryInput(LogicValue carryInput) {
-        this.carryInput = carryInput;
-    }
-
-    public LogicValue getOperationResult() {
-        return operationResult;
+    public LogicValue getOperationOutput() {
+        return s2_0.getOutput();
     }
 
     public LogicValue getCarryOutput() {
-        return carryOutput;
+        return carryOutMultiplexer.getOutput();
     }
 
-    private void initArchitectureElements() {
+    private void initArchitecture() {
         and = new ANDGate(inputA, inputB);
         or = new ORGate(inputA, inputB);
         not = new NOTGate(inputA);
         xor = new XORGate(inputA, inputB);
+
         fullAdder = new FullAdder(carryInput, inputA, inputB);
         fullSubtractor = new FullSubtractor(carryInput, inputA, inputB);
+        carryOutMultiplexer = new TwoToOneMultiplexer(operationCode[0], fullAdder.getCarryOutput(), fullSubtractor.getBorrowOutput());
 
-        s0_0 = new TwoToOneMultiplexer(operationCode[0], and.getOutput(), or.getOutput());
-        s0_1 = new TwoToOneMultiplexer(operationCode[0], not.getOutput(), xor.getOutput());
-        s0_2 = new TwoToOneMultiplexer(operationCode[0], fullAdder.getOutput(), null);
-        s0_3 = new TwoToOneMultiplexer(operationCode[0], null, null);
+        s0_3 = new TwoToOneMultiplexer(operationCode[0], and.getOutput(), or.getOutput());
+        s0_2 = new TwoToOneMultiplexer(operationCode[0], not.getOutput(), xor.getOutput());
+        s0_1 = new TwoToOneMultiplexer(operationCode[0], fullAdder.getOutput(), fullSubtractor.getOutput());
 
-        s1_0 = new TwoToOneMultiplexer(operationCode[1], s0_1.getOutput(), s0_0.getOutput());
-        s1_1 = new TwoToOneMultiplexer(operationCode[2], s0_3.getOutput(), s0_2.getOutput());
+        s1_0 = new TwoToOneMultiplexer(operationCode[1], s0_1.getOutput(), new LogicValue(0));
+        s1_1 = new TwoToOneMultiplexer(operationCode[1], s0_3.getOutput(), s0_2.getOutput());
 
         s2_0 = new TwoToOneMultiplexer(operationCode[2], s1_1.getOutput(), s1_0.getOutput());
+    }
+
+    public void refresh(LogicValue opCode[], LogicValue cIn, LogicValue a, LogicValue b) {
+        this.operationCode = opCode;
+        this.carryInput = cIn;
+        this.inputB = b;
+        this.inputA = a;
+
+        and.refresh(inputA, inputB);
+        or.refresh(inputA, inputB);
+        not.refresh(inputA, null);
+        xor.refresh(inputA, inputB);
+
+        fullAdder.refresh(carryInput, inputA, inputB);
+        fullSubtractor.refresh(carryInput, inputA, inputB);
+        carryOutMultiplexer.refresh(operationCode[0], fullAdder.getCarryOutput(), fullSubtractor.getBorrowOutput());
+
+        s0_3.refresh(operationCode[0], and.getOutput(), or.getOutput());
+        s0_2.refresh(operationCode[0], not.getOutput(), xor.getOutput());
+        s0_1.refresh(operationCode[0], fullAdder.getOutput(), fullSubtractor.getOutput());
+
+        s1_0.refresh(operationCode[1], s0_1.getOutput(), new LogicValue(0));
+        s1_1.refresh(operationCode[1], s0_3.getOutput(), s0_2.getOutput());
+
+        s2_0.refresh(operationCode[2], s1_1.getOutput(), s1_0.getOutput());
     }
 }

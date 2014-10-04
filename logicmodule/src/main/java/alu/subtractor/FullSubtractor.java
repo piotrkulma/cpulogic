@@ -10,9 +10,7 @@ public class FullSubtractor {
     private LogicValue inputA;
     private LogicValue inputB;
 
-    private LogicValue output;
     private LogicValue borrowInput;
-    private LogicValue borrowOutput;
 
     private HalfSubtractor fs1;
     private HalfSubtractor fs2;
@@ -24,35 +22,24 @@ public class FullSubtractor {
         this.inputB = inputB;
 
         setArchitecture();
-        setResults(this.borrowInput, this.inputA, this.inputB);
-    }
-
-    public void setInputA(LogicValue inputA) {
-        this.inputA = inputA;
-        setResults(this.borrowInput, this.inputA, this.inputB);
-    }
-
-    public void setInputB(LogicValue inputB) {
-        this.inputB = inputB;
-        setResults(this.borrowInput, this.inputA, this.inputB);
     }
 
     public LogicValue getBorrowOutput() {
-        setResults(this.borrowInput, this.inputA, this.inputB);
-        return borrowOutput;
+        return or.getOutput();
     }
 
     public LogicValue getOutput() {
-        setResults(this.borrowInput, this.inputA, this.inputB);
-        return output;
+        return fs2.getOutput();
     }
 
-    private void setResults(LogicValue bin, LogicValue a, LogicValue b) {
-        fs1.setResults(a, b);
-        fs2.setResults(bin, fs1.getOutput());
+    public void refresh(LogicValue bin, LogicValue a, LogicValue b) {
+        this.borrowInput = bin;
+        this.inputA = a;
+        this.inputB = b;
 
-        output = fs2.getOutput();
-        borrowOutput = or.getOutput();
+        fs1.refresh(inputA, inputB);
+        fs2.refresh(borrowInput, fs1.getOutput());
+        or.refresh(fs2.getBorrowOutput(), fs1.getBorrowOutput());
     }
 
     private void setArchitecture() {

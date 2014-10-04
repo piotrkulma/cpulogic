@@ -10,17 +10,15 @@ public final class NOTGate extends LogicGate {
     public NOTGate(LogicValue a) {
         this.inA = a;
         this.inB = null;
-        setOutput(this.inA, null);
     }
 
     public LogicValue getOutput() {
-        setOutput(this.inA, null);
-        return out;
+        if(this.inA.getValue() == 1) {
+            return new LogicValue(LogicValue.LOGIC_VALUE_ZERO);
+        } else return new LogicValue(LogicValue.LOGIC_VALUE_ONE);
     }
 
-    public void setOutput(LogicValue a, LogicValue b) {
-        if(a.getValue() == 1) {
-            this.out.setValue(0);
-        } else this.out.setValue(1);
+    public void refresh(LogicValue a, LogicValue b) {
+        this.inA.setValue(a.getValue());
     }
 }

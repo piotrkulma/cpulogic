@@ -74,5 +74,6 @@ public class FullAdderTest {
         a.setValue(_a);
         b.setValue(_b);
         cin.setValue(_cin);
+        fa.refresh(cin, a, b);
     }
 }

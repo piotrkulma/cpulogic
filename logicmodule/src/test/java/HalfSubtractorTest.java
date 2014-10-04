@@ -47,5 +47,7 @@ public class HalfSubtractorTest {
     public void setLogicValues(int _a, int _b) {
         a.setValue(_a);
         b.setValue(_b);
+
+        ha.refresh(a, b);
     }
 }

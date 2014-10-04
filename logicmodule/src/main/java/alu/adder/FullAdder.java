@@ -10,9 +10,7 @@ public class FullAdder {
     private LogicValue inputA;
     private LogicValue inputB;
 
-    private LogicValue output;
     private LogicValue carryInput;
-    private LogicValue carryOutput;
 
     private HalfAdder ha1;
     private HalfAdder ha2;
@@ -24,35 +22,24 @@ public class FullAdder {
         this.inputB = inputB;
 
         initArchitecture();
-        setResults(this.carryInput, this.inputA, this.inputB);
-    }
-
-    public void setInputA(LogicValue inputA) {
-        this.inputA = inputA;
-        setResults(this.carryInput, this.inputA, this.inputB);
-    }
-
-    public void setInputB(LogicValue inputB) {
-        this.inputB = inputB;
-        setResults(this.carryInput, this.inputA, this.inputB);
     }
 
     public LogicValue getCarryOutput() {
-        setResults(this.carryInput, this.inputA, this.inputB);
-        return carryOutput;
+        return or.getOutput();
     }
 
     public LogicValue getOutput() {
-        setResults(this.carryInput, this.inputA, this.inputB);
-        return output;
+        return ha2.getOutput();
     }
 
-    public void setResults(LogicValue cin, LogicValue a, LogicValue b) {
-        ha1.setResults(a, b);
-        ha2.setResults(cin, ha1.getOutput());
+    public void refresh(LogicValue cin, LogicValue a, LogicValue b) {
+        this.carryInput = cin;
+        this.inputA = a;
+        this.inputB = b;
 
-        output = ha2.getOutput();
-        carryOutput = or.getOutput();
+        ha1.refresh(inputA, inputB);
+        ha2.refresh(carryInput, ha1.getOutput());
+        or.refresh(ha2.getCarryOutput(), ha1.getCarryOutput());
     }
 
     private void initArchitecture() {

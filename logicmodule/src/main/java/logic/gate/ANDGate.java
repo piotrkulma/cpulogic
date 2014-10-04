@@ -10,27 +10,24 @@ public final class ANDGate extends LogicGate {
     public ANDGate(LogicValue a, LogicValue b) {
         this.inA = a;
         this.inB = b;
-        setOutput(this.inA, this.inB);
     }
 
     public LogicValue getOutput() {
-        setOutput(this.inA, this.inB);
-        return out;
+        if(this.inA.getValue() == 1 &&  this.inB.getValue() == 1) {
+            return new LogicValue(LogicValue.LOGIC_VALUE_ONE);
+        } return new LogicValue(LogicValue.LOGIC_VALUE_ZERO);
     }
 
     public void setInputA(LogicValue inA) {
         this.inA = inA;
-        setOutput(this.inA, this.inB);
     }
 
     public void setInputB(LogicValue inB) {
         this.inB = inB;
-        setOutput(this.inA, this.inB);
     }
 
-    public void setOutput(LogicValue a, LogicValue b) {
-        if(a.getValue() == 1 && b.getValue() == 1) {
-            this.out.setValue(1);
-        } else this.out.setValue(0);
+    public void refresh(LogicValue a, LogicValue b) {
+        this.inA.setValue(a.getValue());
+        this.inB.setValue(b.getValue());
     }
 }

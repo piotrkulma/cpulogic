@@ -20,85 +20,85 @@ public class LogicFunctionTest {
 
     @Test
     public void andResults() {
-        setInputs(0, 0);
+        setInputs(and, 0, 0);
         Assert.assertEquals(0, and.getOutput().getValue());
 
-        setInputs(0, 1);
+        setInputs(and, 0, 1);
         Assert.assertEquals(0, and.getOutput().getValue());
 
-        setInputs(1, 0);
+        setInputs(and, 1, 0);
         Assert.assertEquals(0, and.getOutput().getValue());
 
-        setInputs(1, 1);
+        setInputs(and, 1, 1);
         Assert.assertEquals(1, and.getOutput().getValue());
     }
 
     @Test
     public void orResults() {
-        setInputs(0, 0);
+        setInputs(or, 0, 0);
         Assert.assertEquals(0, or.getOutput().getValue());
 
-        setInputs(0, 1);
+        setInputs(or, 0, 1);
         Assert.assertEquals(1, or.getOutput().getValue());
 
-        setInputs(1, 0);
+        setInputs(or, 1, 0);
         Assert.assertEquals(1, or.getOutput().getValue());
 
-        setInputs(1, 1);
+        setInputs(or, 1, 1);
         Assert.assertEquals(1, or.getOutput().getValue());
     }
 
     @Test
     public void notResults() {
-        setInputA(0);
+        setInputs(not, 0, 0);
         Assert.assertEquals(1, not.getOutput().getValue());
 
-        setInputA(1);
+        setInputs(not, 1, 0);
         Assert.assertEquals(0, not.getOutput().getValue());
     }
 
     @Test
     public void nandResults() {
-        setInputs(0, 0);
+        setInputs(nand, 0, 0);
         Assert.assertEquals(1, nand.getOutput().getValue());
 
-        setInputs(0, 1);
+        setInputs(nand, 0, 1);
         Assert.assertEquals(1, nand.getOutput().getValue());
 
-        setInputs(1, 0);
+        setInputs(nand, 1, 0);
         Assert.assertEquals(1, nand.getOutput().getValue());
 
-        setInputs(1, 1);
+        setInputs(nand, 1, 1);
         Assert.assertEquals(0, nand.getOutput().getValue());
     }
 
     @Test
     public void norResults() {
-        setInputs(0, 0);
+        setInputs(nor, 0, 0);
         Assert.assertEquals(1, nor.getOutput().getValue());
 
-        setInputs(0, 1);
+        setInputs(nor, 0, 1);
         Assert.assertEquals(0, nor.getOutput().getValue());
 
-        setInputs(1, 0);
+        setInputs(nor, 1, 0);
         Assert.assertEquals(0, nor.getOutput().getValue());
 
-        setInputs(1, 1);
+        setInputs(nor, 1, 1);
         Assert.assertEquals(0, nor.getOutput().getValue());
     }
 
     @Test
     public void xorResults() {
-        setInputs(0, 0);
+        setInputs(xor, 0, 0);
         Assert.assertEquals(0, xor.getOutput().getValue());
 
-        setInputs(0, 1);
+        setInputs(xor, 0, 1);
         Assert.assertEquals(1, xor.getOutput().getValue());
 
-        setInputs(1, 0);
+        setInputs(xor, 1, 0);
         Assert.assertEquals(1, xor.getOutput().getValue());
 
-        setInputs(1, 1);
+        setInputs(xor, 1, 1);
         Assert.assertEquals(0, xor.getOutput().getValue());
     }
 
@@ -108,8 +108,7 @@ public class LogicFunctionTest {
     }
 
     @Ignore
-    private void setInputs(int _a, int _b) {
-        a.setValue(_a);
-        b.setValue(_b);
+    private void setInputs(LogicGate gate, int _a, int _b) {
+        gate.refresh(new LogicValue(_a), new LogicValue(_b));
     }
 }

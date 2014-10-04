@@ -11,9 +11,6 @@ public class HalfAdder {
     private LogicValue inputA;
     private LogicValue inputB;
 
-    private LogicValue output;
-    private LogicValue carryOutput;
-
     private XORGate xor;
     private ANDGate and;
 
@@ -22,35 +19,22 @@ public class HalfAdder {
         this.inputB = inputB;
 
         initArchitecture();
-        setResults(this.inputA, this.inputB);
-    }
-
-    public void setInputA(LogicValue inputA) {
-        this.inputA = inputA;
-        setResults(inputA, inputB);
-    }
-
-    public void setInputB(LogicValue inputB) {
-        this.inputB = inputB;
-        setResults(this.inputA, this.inputB);
     }
 
     public LogicValue getOutput() {
-        setResults(this.inputA, this.inputB);
-        return output;
+        return xor.getOutput();
     }
 
     public LogicValue getCarryOutput() {
-        setResults(this.inputA, this.inputB);
-        return carryOutput;
+        return and.getOutput();
     }
 
-    public void setResults(LogicValue a, LogicValue b) {
-        xor.setOutput(a, b);
-        and.setOutput(a, b);
+    public void refresh(LogicValue a, LogicValue b) {
+        this.inputA = a;
+        this.inputB = b;
 
-        output = xor.getOutput();
-        carryOutput = and.getOutput();
+        xor.refresh(inputA, inputB);
+        and.refresh(inputA, inputB);
     }
 
     private void initArchitecture() {

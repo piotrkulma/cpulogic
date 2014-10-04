@@ -74,5 +74,6 @@ public class FullSubtractorTest {
         a.setValue(_a);
         b.setValue(_b);
         bin.setValue(_bin);
+        fa.refresh(bin, a, b);
     }
 }

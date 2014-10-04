@@ -13,8 +13,6 @@ public class TwoToOneMultiplexer {
     private LogicValue inputB;
     private LogicValue inputS;
 
-    private LogicValue out;
-
     private NOTGate not;
     private ANDGate and1;
     private ANDGate and2;
@@ -26,22 +24,10 @@ public class TwoToOneMultiplexer {
         this.inputS = s;
 
         initArchitecture();
-        setOutput(this.inputS, this.inputA, this.inputB);
     }
 
     public LogicValue getOutput() {
-        setOutput(this.inputS, this.inputA, this.inputB);
-        return out;
-    }
-
-    public void setInputA(LogicValue inputA) {
-        this.inputA = inputA;
-        setOutput(this.inputS, this.inputA, this.inputB);
-    }
-
-    public void setInputB(LogicValue inputB) {
-        this.inputB = inputB;
-        setOutput(this.inputS, this.inputA, this.inputB);
+        return or.getOutput();
     }
 
     private void initArchitecture() {
@@ -51,11 +37,14 @@ public class TwoToOneMultiplexer {
         or = new ORGate(and1.getOutput(), and2.getOutput());
     }
 
-    public void setOutput(LogicValue s, LogicValue a, LogicValue b) {
-        not.setOutput(a, b);
-        and1.setOutput(a, not.getOutput());
-        and2.setOutput(s, b);
+    public void refresh(LogicValue s, LogicValue a, LogicValue b) {
+        this.inputA = a;
+        this.inputB = b;
+        this.inputS = s;
 
-        out = or.getOutput();
+        not.refresh(inputS, null);
+        and1.refresh(inputA, not.getOutput());
+        and2.refresh(inputS, inputB);
+        or.refresh(and1.getOutput(), and2.getOutput());
     }
 }

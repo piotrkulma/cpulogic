@@ -46,5 +46,6 @@ public class MultiplexerTest {
         s.setValue(_s);
         a.setValue(_a);
         b.setValue(_b);
+        multiplexer.refresh(s, a, b);
     }
 }

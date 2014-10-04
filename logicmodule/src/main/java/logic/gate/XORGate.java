@@ -15,23 +15,19 @@ public final class XORGate extends LogicGate {
         this.inB = b;
 
         initArchitecture();
-        setOutput(this.inA, this.inB);
     }
 
     @Override
     public LogicValue getOutput() {
-        setOutput(this.inA, this.inB);
-        return out;
+        return and.getOutput();
     }
 
     public void setInputA(LogicValue inA) {
         this.inA = inA;
-        setOutput(this.inA, this.inB);
     }
 
     public void setInputB(LogicValue inB) {
         this.inB = inB;
-        setOutput(this.inA, this.inB);
     }
 
     public void initArchitecture() {
@@ -40,9 +36,9 @@ public final class XORGate extends LogicGate {
         and = new ANDGate(or.getOutput(), nand.getOutput());
     }
 
-    public void setOutput(LogicValue a, LogicValue b) {
-        or.setOutput(a, b);
-        nand.setOutput(a, b);
-        out = and.getOutput();
+    public void refresh(LogicValue a, LogicValue b) {
+        or.refresh(a, b);
+        nand.refresh(a, b);
+        and.refresh(or.getOutput(), nand.getOutput());
     }
 }

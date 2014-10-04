@@ -13,28 +13,24 @@ public final class NORGate extends LogicGate {
         this.inA = a;
         this.inB = b;
         initArchitecture();
-        setOutput(this.inA, this.inB);
+        refresh(this.inA, this.inB);
     }
 
     public LogicValue getOutput() {
-        setOutput(this.inA, this.inB);
-
-        return out;
+        return not.getOutput();
     }
 
     public void setInputA(LogicValue inA) {
         this.inA = inA;
-        setOutput(this.inA, this.inB);
     }
 
     public void setInputB(LogicValue inB) {
         this.inB = inB;
-        setOutput(this.inA, this.inB);
     }
 
-    public void setOutput(LogicValue a, LogicValue b) {
-        or.setOutput(a, b);
-        out = not.getOutput();
+    public void refresh(LogicValue a, LogicValue b) {
+        or.refresh(a, b);
+        not.refresh(or.getOutput(), null);
     }
 
     private void initArchitecture() {
