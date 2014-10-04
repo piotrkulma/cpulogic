@@ -20,16 +20,11 @@ public final class NORGate extends LogicGate {
         return not.getOutput();
     }
 
-    public void setInputA(LogicValue inA) {
-        this.inA = inA;
-    }
-
-    public void setInputB(LogicValue inB) {
-        this.inB = inB;
-    }
-
     public void refresh(LogicValue a, LogicValue b) {
-        or.refresh(a, b);
+        this.inA = a;
+        this.inB = b;
+
+        or.refresh(inA, inB);
         not.refresh(or.getOutput(), null);
     }
 

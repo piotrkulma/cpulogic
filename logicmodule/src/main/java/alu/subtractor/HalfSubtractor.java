@@ -26,14 +26,6 @@ public class HalfSubtractor {
         initArchitecture();
     }
 
-    public void setInputA(LogicValue inputA) {
-        this.inputA = inputA;
-    }
-
-    public void setInputB(LogicValue inputB) {
-        this.inputB = inputB;
-    }
-
     public LogicValue getOutput() {
         return output = xor.getOutput();
     }
@@ -43,8 +35,11 @@ public class HalfSubtractor {
     }
 
     public void refresh(LogicValue a, LogicValue b) {
-        xor.refresh(a, b);
-        not.refresh(b, null);
+        this.inputA = a;
+        this.inputB = b;
+
+        xor.refresh(inputA, inputB);
+        not.refresh(inputB, null);
         and.refresh(this.inputA, not.getOutput());
     }
 

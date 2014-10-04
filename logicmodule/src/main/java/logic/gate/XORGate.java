@@ -22,14 +22,6 @@ public final class XORGate extends LogicGate {
         return and.getOutput();
     }
 
-    public void setInputA(LogicValue inA) {
-        this.inA = inA;
-    }
-
-    public void setInputB(LogicValue inB) {
-        this.inB = inB;
-    }
-
     public void initArchitecture() {
         or = new ORGate(this.inA, this.inB);
         nand = new NANDGate(this.inA, this.inB);
@@ -37,8 +29,11 @@ public final class XORGate extends LogicGate {
     }
 
     public void refresh(LogicValue a, LogicValue b) {
-        or.refresh(a, b);
-        nand.refresh(a, b);
+        this.inA = a;
+        this.inB = b;
+
+        or.refresh(inA, inB);
+        nand.refresh(inA, inB);
         and.refresh(or.getOutput(), nand.getOutput());
     }
 }

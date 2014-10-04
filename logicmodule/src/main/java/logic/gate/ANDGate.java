@@ -18,14 +18,6 @@ public final class ANDGate extends LogicGate {
         } return new LogicValue(LogicValue.LOGIC_VALUE_ZERO);
     }
 
-    public void setInputA(LogicValue inA) {
-        this.inA = inA;
-    }
-
-    public void setInputB(LogicValue inB) {
-        this.inB = inB;
-    }
-
     public void refresh(LogicValue a, LogicValue b) {
         this.inA.setValue(a.getValue());
         this.inB.setValue(b.getValue());

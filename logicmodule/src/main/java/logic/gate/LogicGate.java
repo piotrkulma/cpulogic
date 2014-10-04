@@ -14,11 +14,6 @@ public abstract class LogicGate {
         this.inB = new LogicValue();
     }
 
-    public LogicGate(LogicValue a, LogicValue b) {
-        this.inA = a;
-        this.inB = b;
-    }
-
     public abstract LogicValue getOutput();
     public abstract void refresh(LogicValue a, LogicValue b);
 

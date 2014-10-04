@@ -20,21 +20,16 @@ public final class NANDGate extends LogicGate {
         return not.getOutput();
     }
 
-    public void setInputA(LogicValue inA) {
-        this.inA = inA;
-    }
-
-    public void setInputB(LogicValue inB) {
-        this.inB = inB;
-    }
-
     private void initArchitecture() {
         and = new ANDGate(this.inA, this.inB);
         not = new NOTGate(and.getOutput());
     }
 
     public void refresh(LogicValue a, LogicValue b) {
-        and.refresh(a, b);
+        this.inA = a;
+        this.inB = b;
+
+        and.refresh(inA, inB);
         not.refresh(and.getOutput(), null);
     }
 }

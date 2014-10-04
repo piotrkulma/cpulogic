@@ -22,11 +22,16 @@ public class LogicValueUtil {
         return logicValueArray;
     }
 
-    public static int getIntFromCharacter(char c) {
-        return (c-48);
+    public static String getLogicValueArrayToString(LogicValue[] logicValueArray) {
+        String output = "";
+        for(LogicValue lv : logicValueArray) {
+            output = output + Integer.toString(lv.getValue());
+        }
+
+        return output;
     }
 
-    public static LogicValue getLogicValueFromCharacter(char c) {
-        return new LogicValue(getIntFromCharacter(c));
+    public static int getIntFromCharacter(char c) {
+        return (c-48);
     }
 }
