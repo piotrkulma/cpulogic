@@ -1,5 +1,4 @@
-import alu.adder.FullAdder;
-import alu.subtractor.FullSubtractor;
+import cpu.alu.adder.FullAdder;
 import logic.LogicValue;
 import org.junit.Assert;
 import org.junit.Ignore;

@@ -1,13 +1,12 @@
-package alu;
+package cpu.alu;
 
-import alu.adder.FullAdder;
-import alu.subtractor.FullSubtractor;
+import cpu.alu.adder.FullAdder;
+import cpu.alu.subtractor.FullSubtractor;
 import logic.LogicValue;
 import logic.gate.ANDGate;
 import logic.gate.NOTGate;
 import logic.gate.ORGate;
 import logic.gate.XORGate;
-import logic.utils.LogicValueUtil;
 
 /**
  * Created by Piotr Kulma on 20.09.14.

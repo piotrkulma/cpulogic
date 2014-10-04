@@ -1,7 +1,10 @@
 package logic;
 
-import alu.adder.FullAdder;
-import alu.subtractor.FullSubtractor;
+import cpu.register.Register;
+import cpu.alu.adder.FullAdder;
+import cpu.alu.subtractor.FullSubtractor;
+import cpu.register.EightBitRegister;
+import logic.utils.LogicValueUtil;
 
 /**
  * Created by Piotr Kulma on 07.09.14.
@@ -9,13 +12,45 @@ import alu.subtractor.FullSubtractor;
 
 public class Main {
     public static void main(String[] args) {
-        _4BitAdder("0001", "0001");
-        System.out.println();
-        _4BitAdder("1001", "0001");
-        System.out.println();
-        _4BitAdder("1111", "1111");
-        System.out.println();
-        _4BitSubtractor("1001", "1111");
+        LogicValue[] aluOutput = LogicValueUtil.getLogicValueArrayFromString("10101010");
+        LogicValue[] dataBus = LogicValueUtil.getLogicValueArrayFromString("00000000");
+
+        EightBitRegister register0 = new EightBitRegister();
+        EightBitRegister register1 = new EightBitRegister();
+        EightBitRegister register2 = new EightBitRegister();
+
+        Register aluRegister = register0;
+
+        register0.input = aluOutput;
+        register0.output = dataBus;
+
+        register1.input = dataBus;
+        register2.input = dataBus;
+
+        register1.output = dataBus;
+        register2.output = dataBus;
+
+        aluRegister.set();
+        aluRegister.enable();
+        register1.set();
+
+        LogicValueUtil.setLogicValueArrayFromString("11110000", aluOutput);
+
+        aluRegister.set();
+        aluRegister.enable();
+        register2.set();
+
+        LogicValueUtil.setLogicValueArrayFromString("00000000", aluOutput);
+        aluRegister.set();
+        aluRegister.enable();
+
+        System.out.println(LogicValueUtil.getLogicValueArrayToString(dataBus));
+
+        register1.enable();
+        System.out.println(LogicValueUtil.getLogicValueArrayToString(dataBus));
+
+        register2.enable();
+        System.out.println(LogicValueUtil.getLogicValueArrayToString(dataBus));
 
     }
 

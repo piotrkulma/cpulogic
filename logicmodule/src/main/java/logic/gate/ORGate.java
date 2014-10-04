@@ -14,8 +14,8 @@ public final class ORGate extends LogicGate {
 
     public LogicValue getOutput() {
         if(this.inA.getValue() == 1 || this.inB.getValue() == 1) {
-            return new LogicValue(LogicValue.LOGIC_VALUE_ONE);
-        } else return new LogicValue(LogicValue.LOGIC_VALUE_ZERO);
+            return new LogicValue(LogicValue.LOGIC_VALUE_ONE_INT);
+        } else return new LogicValue(LogicValue.LOGIC_VALUE_ZERO_INT);
     }
 
     public void refresh(LogicValue a, LogicValue b) {

@@ -1,4 +1,4 @@
-package alu;
+package cpu.alu;
 
 import logic.LogicValue;
 
@@ -22,7 +22,7 @@ public class EightBitAlu {
     }
 
     public LogicValue[] getOutputValue() {
-        LogicValue carryIn = new LogicValue(LogicValue.LOGIC_VALUE_ZERO);
+        LogicValue carryIn = new LogicValue(LogicValue.LOGIC_VALUE_ZERO_INT);
         LogicValue[] output = new LogicValue[BIT_COUNT];
 
         for(int i=0; i<BIT_COUNT; i++) {
@@ -49,7 +49,7 @@ public class EightBitAlu {
         this.inputA = a;
         this.inputB = b;
 
-        LogicValue carryIn = new LogicValue(LogicValue.LOGIC_VALUE_ZERO);
+        LogicValue carryIn = new LogicValue(LogicValue.LOGIC_VALUE_ZERO_INT);
 
         for(int i=0; i<BIT_COUNT; i++) {
             aluArray[i] = new OneBitAlu(operCode, carryIn, a[i], b[i]);

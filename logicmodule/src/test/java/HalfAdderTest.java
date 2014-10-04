@@ -1,4 +1,4 @@
-import alu.adder.HalfAdder;
+import cpu.alu.adder.HalfAdder;
 import logic.LogicValue;
 import org.junit.Assert;
 import org.junit.Ignore;

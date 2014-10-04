@@ -1,4 +1,4 @@
-package alu;
+package cpu.alu;
 
 import logic.LogicValue;
 import logic.gate.ANDGate;

@@ -14,8 +14,8 @@ public final class NOTGate extends LogicGate {
 
     public LogicValue getOutput() {
         if(this.inA.getValue() == 1) {
-            return new LogicValue(LogicValue.LOGIC_VALUE_ZERO);
-        } else return new LogicValue(LogicValue.LOGIC_VALUE_ONE);
+            return new LogicValue(LogicValue.LOGIC_VALUE_ZERO_INT);
+        } else return new LogicValue(LogicValue.LOGIC_VALUE_ONE_INT);
     }
 
     public void refresh(LogicValue a, LogicValue b) {

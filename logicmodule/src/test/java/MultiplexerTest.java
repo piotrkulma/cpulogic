@@ -1,4 +1,4 @@
-import alu.TwoToOneMultiplexer;
+import cpu.alu.TwoToOneMultiplexer;
 import logic.LogicValue;
 import org.junit.Assert;
 import org.junit.Ignore;

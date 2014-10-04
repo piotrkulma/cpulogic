@@ -1,4 +1,4 @@
-import alu.OneBitAlu;
+import cpu.alu.OneBitAlu;
 import logic.LogicValue;
 import logic.utils.LogicValueUtil;
 import org.junit.Assert;

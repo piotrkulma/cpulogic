@@ -1,4 +1,4 @@
-package alu.subtractor;
+package cpu.alu.subtractor;
 
 import logic.LogicValue;
 import logic.gate.ANDGate;
