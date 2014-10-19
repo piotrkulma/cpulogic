@@ -1,9 +1,10 @@
 package logic;
 
-import cpu.register.Register;
+import cpu.EightBitProgramCounter;
+import cpu.register.EightBitRegister;
+import memory.Memory;
 import cpu.alu.adder.FullAdder;
 import cpu.alu.subtractor.FullSubtractor;
-import cpu.register.EightBitRegister;
 import logic.utils.LogicValueUtil;
 
 /**
@@ -12,14 +13,14 @@ import logic.utils.LogicValueUtil;
 
 public class Main {
     public static void main(String[] args) {
-        LogicValue[] aluOutput = LogicValueUtil.getLogicValueArrayFromString("10101010");
+/*        LogicValue[] aluOutput = LogicValueUtil.getLogicValueArrayFromString("10101010");
         LogicValue[] dataBus = LogicValueUtil.getLogicValueArrayFromString("00000000");
 
         EightBitRegister register0 = new EightBitRegister();
         EightBitRegister register1 = new EightBitRegister();
         EightBitRegister register2 = new EightBitRegister();
 
-        Register aluRegister = register0;
+        Memory aluMemory = register0;
 
         register0.input = aluOutput;
         register0.output = dataBus;
@@ -30,19 +31,19 @@ public class Main {
         register1.output = dataBus;
         register2.output = dataBus;
 
-        aluRegister.set();
-        aluRegister.enable();
+        aluMemory.set();
+        aluMemory.enable();
         register1.set();
 
         LogicValueUtil.setLogicValueArrayFromString("11110000", aluOutput);
 
-        aluRegister.set();
-        aluRegister.enable();
+        aluMemory.set();
+        aluMemory.enable();
         register2.set();
 
         LogicValueUtil.setLogicValueArrayFromString("00000000", aluOutput);
-        aluRegister.set();
-        aluRegister.enable();
+        aluMemory.set();
+        aluMemory.enable();
 
         System.out.println(LogicValueUtil.getLogicValueArrayToString(dataBus));
 
@@ -50,8 +51,41 @@ public class Main {
         System.out.println(LogicValueUtil.getLogicValueArrayToString(dataBus));
 
         register2.enable();
-        System.out.println(LogicValueUtil.getLogicValueArrayToString(dataBus));
+        System.out.println(LogicValueUtil.getLogicValueArrayToString(dataBus));*/
 
+        EightBitProgramCounter pc = new EightBitProgramCounter();
+        int clock = 1;
+
+        for(int i=0; i<100; i++) {
+
+            pc.refresh(new LogicValue(1), new LogicValue(clock));
+            String res = LogicValueUtil.getLogicValueArrayToString(pc.getOutput(), false);
+            System.out.println(res + " " + getIntValFromBinString(res));
+
+            try {
+                Thread.sleep(1000);
+
+                if(clock == 0) {
+                    clock = 1;
+                } else {
+                    clock = 0;
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
+    private static int getIntValFromBinString(String binString) {
+        int ret = 0;
+
+        for(int i=0; i<binString.length(); i++) {
+            ret += ((binString.charAt(i) - 48) * Math.pow(2, i));
+        }
+
+        return ret;
     }
 
     public static LogicValue[] stringToArray(String binary) {

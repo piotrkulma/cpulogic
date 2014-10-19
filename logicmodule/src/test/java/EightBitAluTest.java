@@ -19,133 +19,133 @@ public class EightBitAluTest {
     @Test
     public void eightBitAluORTest() {
         setValues(OneBitAluTest.OR_OPERATION_CODE_STRING, "10101010", "01010101");
-        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.OR_OPERATION_CODE_STRING, "11110000", "00001111");
-        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.OR_OPERATION_CODE_STRING, "11111111", "00000000");
-        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.OR_OPERATION_CODE_STRING, "00000000", "11111111");
-        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.OR_OPERATION_CODE_STRING, "00000000", "00000000");
-        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.OR_OPERATION_CODE_STRING, "11110000", "00000000");
-        Assert.assertEquals("11110000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11110000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.OR_OPERATION_CODE_STRING, "10101010", "00000000");
-        Assert.assertEquals("10101010", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("10101010", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.OR_OPERATION_CODE_STRING, "00000000", "01010101");
-        Assert.assertEquals("01010101", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("01010101", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.OR_OPERATION_CODE_STRING, "11111111", "11111111");
-        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.OR_OPERATION_CODE_STRING, "10101010", "10101010");
-        Assert.assertEquals("10101010", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("10101010", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
     }
 
     @Test
     public void eightBitAluANDTest() {
         setValues(OneBitAluTest.AND_OPERATION_CODE_STRING, "11111111", "11111111");
-        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.AND_OPERATION_CODE_STRING, "10101010", "10101010");
-        Assert.assertEquals("10101010", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("10101010", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.AND_OPERATION_CODE_STRING, "11111111", "00000000");
-        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.AND_OPERATION_CODE_STRING, "00000000", "11111111");
-        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.AND_OPERATION_CODE_STRING, "00000000", "00000000");
-        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.AND_OPERATION_CODE_STRING, "11110000", "00000000");
-        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.AND_OPERATION_CODE_STRING, "10101010", "00000000");
-        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.AND_OPERATION_CODE_STRING, "00000000", "01010101");
-        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.AND_OPERATION_CODE_STRING, "10101010", "01010101");
-        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.AND_OPERATION_CODE_STRING, "11110000", "11110000");
-        Assert.assertEquals("11110000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11110000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.AND_OPERATION_CODE_STRING, "00001111", "00001111");
-        Assert.assertEquals("00001111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("00001111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.AND_OPERATION_CODE_STRING, "01010101", "01010101");
-        Assert.assertEquals("01010101", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("01010101", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
     }
 
     @Test
     public void eightBitAluNOTTest() {
         setValues(OneBitAluTest.NOT_OPERATION_CODE_STRING, "11111111", "00000000");
-        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.NOT_OPERATION_CODE_STRING, "00000000", "00000000");
-        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.NOT_OPERATION_CODE_STRING, "10101010", "00000000");
-        Assert.assertEquals("01010101", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("01010101", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.NOT_OPERATION_CODE_STRING, "11110000", "00000000");
-        Assert.assertEquals("00001111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("00001111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.NOT_OPERATION_CODE_STRING, "00001111", "00000000");
-        Assert.assertEquals("11110000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11110000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.NOT_OPERATION_CODE_STRING, "11111111", "11111111");
-        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.NOT_OPERATION_CODE_STRING, "00000000", "11111111");
-        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.NOT_OPERATION_CODE_STRING, "10101010", "11111111");
-        Assert.assertEquals("01010101", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("01010101", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.NOT_OPERATION_CODE_STRING, "11110000", "11111111");
-        Assert.assertEquals("00001111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("00001111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.NOT_OPERATION_CODE_STRING, "00001111", "11111111");
-        Assert.assertEquals("11110000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11110000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
     }
 
     @Test
     public void eightBitAluXORTest() {
         setValues(OneBitAluTest.XOR_OPERATION_CODE_STRING, "11111111", "00000000");
-        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.XOR_OPERATION_CODE_STRING, "00000000", "11111111");
-        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.XOR_OPERATION_CODE_STRING, "11111111", "11111111");
-        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.XOR_OPERATION_CODE_STRING, "10101010", "01010101");
-        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.XOR_OPERATION_CODE_STRING, "10101010", "10101010");
-        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.XOR_OPERATION_CODE_STRING, "01010101", "01010101");
-        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("00000000", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.XOR_OPERATION_CODE_STRING, "11110000", "00001111");
-        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
 
         setValues(OneBitAluTest.XOR_OPERATION_CODE_STRING, "00001111", "11110000");
-        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue()));
+        Assert.assertEquals("11111111", LogicValueUtil.getLogicValueArrayToString(eightBitAlu.getOutputValue(), false));
     }
 
     @Ignore

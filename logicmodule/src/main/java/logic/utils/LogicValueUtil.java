@@ -22,10 +22,14 @@ public class LogicValueUtil {
         return logicValueArray;
     }
 
-    public static String getLogicValueArrayToString(LogicValue[] logicValueArray) {
+    public static String getLogicValueArrayToString(LogicValue[] logicValueArray, boolean reverseOrder) {
         String output = "";
         for(LogicValue lv : logicValueArray) {
-            output = output + Integer.toString(lv.getValue());
+            if(reverseOrder) {
+                output = Integer.toString(lv.getValue()) + output;
+            } else {
+                output = output + Integer.toString(lv.getValue());
+            }
         }
 
         return output;

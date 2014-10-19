@@ -2,11 +2,12 @@ package cpu.register;
 
 import logic.LogicValue;
 import logic.utils.LogicValueUtil;
+import memory.Memory;
 
 /**
  * Created by Piotr Kulma on 04.10.14.
  */
-public class EightBitRegister implements Register {
+public class EightBitRegister implements Memory {
     public LogicValue[] input;
     public LogicValue[] memory;
     public LogicValue[] output;

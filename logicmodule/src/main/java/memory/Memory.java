@@ -1,9 +1,9 @@
-package cpu.register;
+package memory;
 
 /**
  * Created by Piotr Kulma on 04.10.14.
  */
-public interface Register {
+public interface Memory {
     public void enable();
     public void set();
 }
