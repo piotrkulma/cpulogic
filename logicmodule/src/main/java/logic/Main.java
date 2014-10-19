@@ -1,8 +1,6 @@
 package logic;
 
-import cpu.EightBitProgramCounter;
-import cpu.register.EightBitRegister;
-import memory.Memory;
+import cpu.programcounter.EightBitProgramCounter;
 import cpu.alu.adder.FullAdder;
 import cpu.alu.subtractor.FullSubtractor;
 import logic.utils.LogicValueUtil;

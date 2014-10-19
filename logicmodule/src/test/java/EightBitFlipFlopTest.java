@@ -1,4 +1,4 @@
-import cpu.EightBitProgramCounter;
+import cpu.programcounter.EightBitProgramCounter;
 import logic.LogicValue;
 import logic.utils.LogicValueUtil;
 import org.junit.Assert;

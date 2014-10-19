@@ -1,4 +1,4 @@
-import cpu.JKFlipFlop;
+import cpu.programcounter.JKFlipFlop;
 import logic.LogicValue;
 import org.junit.Assert;
 import org.junit.Ignore;

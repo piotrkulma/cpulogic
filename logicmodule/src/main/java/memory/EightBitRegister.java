@@ -1,4 +1,4 @@
-package cpu.register;
+package memory;
 
 import logic.LogicValue;
 import logic.utils.LogicValueUtil;

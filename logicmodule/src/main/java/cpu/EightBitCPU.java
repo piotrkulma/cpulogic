@@ -1,7 +1,7 @@
 package cpu;
 
 import cpu.alu.EightBitAlu;
-import cpu.register.EightBitRegister;
+import memory.EightBitRegister;
 
 /**
  * Created by Piotr Kulma on 04.10.14.

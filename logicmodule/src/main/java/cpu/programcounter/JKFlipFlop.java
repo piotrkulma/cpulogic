@@ -1,4 +1,4 @@
-package cpu;
+package cpu.programcounter;
 
 import logic.LogicValue;
 

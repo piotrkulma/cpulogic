@@ -1,5 +1,6 @@
-package cpu;
+package cpu.programcounter;
 
+import cpu.programcounter.JKFlipFlop;
 import logic.LogicValue;
 import logic.gate.ANDGate;
 
